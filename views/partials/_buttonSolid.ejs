@@ -1,0 +1,6 @@
+<button class="btn-solid btn d-inline-flex align-items-center justify-content-center gap-2 rounded-3 px-3 py-2 <%= locals.buttonClass %>" type="<%= locals.type || 'button' %>">
+    <% if (locals.iconClass) { %>
+        <i class="bi fs-5 <%= iconClass %>"></i> 
+    <% } %>
+    <span class="btn-label fw-semibold fs-6"><%- label %></span>
+</button>

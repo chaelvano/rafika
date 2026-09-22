@@ -1,0 +1,32 @@
+<div class="w-100 <%= locals.errorMessage ? '' : 'my-1' %>">
+    <label class="fs-6 fw-light mx-3" for="<%= name %>-form"><%= label %></label>
+
+    <div class="position-relative">
+        <input id="<%= name %>-form" class="text-field form-control rounded-3 fw-light <%= type === 'password' ? 'pe-5' : '' %>" name="<%= name %>" type="<%= type %>" <%- locals.errorMessage ? 'style="border-color: var(--red) !important;"' : '' %> placeholder="<%= locals.placeholder || '' %>" value="<%= locals.value || '' %>">
+
+        <% if (type === 'password') { %>
+            <button id="<%= name %>-toggle" type="button" class="btn p-0 border-0 position-absolute translate-middle-x translate-middle-y end-0 top-50 me-3" style="color: var(--grey);">
+                <i class="bi bi-eye-slash-fill"></i>
+            </button>
+
+            <script>
+              (() => {
+                const input = document.getElementById('<%= name %>-form');
+                const toggle = document.getElementById('<%= name %>-toggle');
+                const icon = toggle.querySelector('i');
+
+                toggle.addEventListener('click', () => {
+                  const show = input.type === 'password';
+                  input.type = show ? 'text' : 'password';
+                  icon.classList.toggle('bi-eye-slash-fill');
+                  icon.classList.toggle('bi-eye-fill');
+                });
+              })();
+            </script>
+        <% } %>
+    </div>
+
+    <% if (locals.errorMessage) { %>
+        <small id="<%= name %>-message" class="form-text text-danger fw-light mx-3 my-0"><%= errorMessage %></small>
+    <% } %>
+</div>

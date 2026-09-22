@@ -1,0 +1,27 @@
+<table class="tbl d-flex flex-column flex-grow-1 align-items-center justify-content-start w-100">
+    <caption class="fw-bold fs-2 mb-1 px-4 py-0 w-100">
+        Fasilitas
+    </caption>
+
+    <thead class="tbl-head d-flex flex-row align-items-center justify-content-center bg-white shadow-sm rounded-3 mb-2 px-4 py-3 w-100">
+        <tr class="tbl-head-row d-flex flex-row align-items-center w-100">
+            <% columns.forEach(col => { %>
+                <th class="tbl-col fw-medium fs-6 flex-grow-1 flex-shrink-1" style="color: var(--black); flex-basis: 0;">
+                    <%= col %>
+                </th>
+            <% }) %>
+        </tr>
+    </thead>
+
+    <tbody class="tbl-body d-flex flex-column align-items-center justify-content-center bg-white shadow-sm rounded-3 mt-2 w-100">
+        <% rows.forEach(row => { %>
+            <tr class="tbl-row d-flex flex-row align-items-center bg-white px-4 py-3 w-100">
+                <% row.forEach(val => { %>
+                    <td class="fw-light fs-6 flex-grow-1 flex-shrink-1" style="flex-basis: 0;">
+                        <%= val %>
+                    </td>
+                <% }) %>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
