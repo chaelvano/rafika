@@ -17,29 +17,22 @@ class User {
     }
 
     static async login({ email, password }) {
-        const query = `
-            SELECT * FROM pengguna
-            WHERE email = $1;
-        `;
+        const user = await this.findByEmail(email);
 
-        const result = await pool.query(query, [email]);
-
-        if (result.rows.length === 0) {
-            throw new Error('Email atau password salah.');
+        if (!user) {
+            throw new Error('Email atau password salah');
         }
 
-        const user = result.rows[0];
+        const isPasswordMatch = await bcrypt.compare(password, user.password_hash);
+
+        if (!isPasswordMatch) {
+            throw new Error('Email atau password salah');
+        }
 
         if (user.status === 'menunggu_verifikasi') {
-            throw new Error('Akun belum diverifikasi.');
+            throw new Error('Akun belum diverifikasi');
         } else if (user.status === 'nonaktif') {
-            throw new Error('Akun telah dinonaktifkan.');
-        }
-
-        const isValidPassword = await bcrypt.compare(password, user.password_hash);
-
-        if (!isValidPassword) {
-            throw new Error('Email atau password salah.');
+            throw new Error('Akun telah dinonaktifkan');
         }
 
         const { password_hash: _, ...userWithoutPassword } = user;
