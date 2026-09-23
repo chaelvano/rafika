@@ -20,7 +20,7 @@ DROP TYPE IF EXISTS status_laporan CASCADE;
 
 -- ENUM untuk role pengguna
 CREATE TYPE role_pengguna AS ENUM (
-  'pengguna',
+  'pengguna', -- Expand later => 'dosen', 'mahasiswa'
   'petugas',
   'admin'
 );
@@ -82,7 +82,7 @@ CREATE TABLE pengguna (
   id SERIAL PRIMARY KEY,
   nama VARCHAR(255) NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL,  -- bcrypt hash
+  password_hash VARCHAR(255) NOT NULL,  -- bcrypt hash
   role role_pengguna NOT NULL,
   status status_pengguna DEFAULT 'menunggu_verifikasi' NOT NULL,
   dibuat_pada TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -90,7 +90,6 @@ CREATE TABLE pengguna (
 );
 
 -- Indexes untuk pengguna
-CREATE INDEX idx_pengguna_email ON pengguna(email);
 CREATE INDEX idx_pengguna_role ON pengguna(role);
 CREATE INDEX idx_pengguna_status ON pengguna(status);
 
@@ -164,8 +163,8 @@ CREATE TABLE reservasi (
   
   -- Constraint: jam operasional (07.00-20.00)
   CONSTRAINT chk_jam_operasional CHECK (
-    EXTRACT(HOUR FROM waktu_mulai) >= 7 AND 
-    EXTRACT(HOUR FROM waktu_selesai) <= 20
+    waktu_mulai::time >= TIME '07:00' AND
+    waktu_selesai::time <= TIME '20:00'
   ),
   
   -- Constraint: slot 30 menit (menit harus 00 atau 30)
@@ -305,8 +304,7 @@ BEGIN
     diperbarui_pada = CURRENT_TIMESTAMP
   WHERE 
     status = 'menunggu'
-    AND DATE(waktu_mulai) <= CURRENT_DATE  -- Tanggal reservasi sudah lewat atau hari ini
-    AND DATE(dibuat_pada) < DATE(waktu_mulai);  -- Dibuat sebelum tanggal reservasi
+    AND DATE(waktu_mulai) <= CURRENT_DATE;  -- Tanggal reservasi sudah lewat atau hari ini
 END;
 $$ LANGUAGE plpgsql;
 

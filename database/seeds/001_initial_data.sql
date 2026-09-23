@@ -15,7 +15,7 @@
 
 -- Generate hash dengan: node -e "console.log(require('bcrypt').hashSync('YOUR_PASSWORD', 10))"
 
-INSERT INTO pengguna (nama, email, password, role, status) VALUES
+INSERT INTO pengguna (nama, email, password_hash, role, status) VALUES
 -- Admin
 ('Administrator Satu', 'admin1@faculties.undip.ac.id', '$2b$10$aFbVH15w9qAZHcX42M2uTex7BK/kQ.oHjKkb2W.7lPkEGqKTJtvdK', 'admin', 'aktif'),
 
@@ -23,8 +23,8 @@ INSERT INTO pengguna (nama, email, password, role, status) VALUES
 ('Petugas Satu', 'petugas1@faculties.undip.ac.id', '$2b$10$5B/qzOgzFtz1hBlKA.gcVOJGEFzO/55wzR28VmhplqulAieFvxkXS', 'petugas', 'aktif'),
 
 -- Pengguna (mahasiswa & dosen - sudah terverifikasi untuk testing)
-('Dosen Satu', 'dosen1@faculties.undip.ac.id', '$2b$10$H/yIbHHTCZ6qmSffHdzzUOw5M7f96yqsktIC2TEu4i.KleEdggW8y', 'pengguna', 'aktif');
-('Mahasiswa Satu', 'mahasiswa1@students.undip.ac.id', '$2b$10$TZOGtS3/ZjQQmB/XnIujd.RGdjRP52kkoLrDRbSYbG7Eew.ALnqtO', 'pengguna', 'menunggu_verifikasi'),
+('Dosen Satu', 'dosen1@faculties.undip.ac.id', '$2b$10$H/yIbHHTCZ6qmSffHdzzUOw5M7f96yqsktIC2TEu4i.KleEdggW8y', 'pengguna', 'aktif'),
+('Mahasiswa Satu', 'mahasiswa1@students.undip.ac.id', '$2b$10$TZOGtS3/ZjQQmB/XnIujd.RGdjRP52kkoLrDRbSYbG7Eew.ALnqtO', 'pengguna', 'menunggu_verifikasi');
 
 -- =============================================
 -- FASILITAS: Master Data
@@ -36,14 +36,17 @@ INSERT INTO fasilitas (nama, tipe, lokasi, kapasitas, deskripsi, status) VALUES
 ('Ruang A102', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'dalam_perbaikan'),
 ('Ruang A103', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
 ('Ruang A104', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A105', 'ruang_kelas', 'Gedung A', 75, 'Ruang kelas dengan AC dan IFP', 'aktif'),
 ('Ruang A201', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
 ('Ruang A202', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
 ('Ruang A203', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
 ('Ruang A204', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A205', 'ruang_kelas', 'Gedung A', 75, 'Ruang kelas dengan AC dan IFP', 'aktif'),
 ('Ruang A301', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
 ('Ruang A302', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
 ('Ruang A303', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
 ('Ruang A304', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A305', 'ruang_kelas', 'Gedung A', 75, 'Ruang kelas dengan AC dan IFP', 'aktif'),
 
 -- Aula
 ('Ruang E101', 'aula', 'Gedung E', 200, 'Aula utama dengan AC dan sound system', 'aktif'),
@@ -63,7 +66,7 @@ INSERT INTO fasilitas (nama, tipe, lokasi, kapasitas, deskripsi, status) VALUES
 -- Lapangan (kapasitas dan lokasi tidak relevan, set NULL)
 ('Lapangan Badminton', 'lapangan', NULL, NULL, 'Lapangan badminton outdoor', 'nonaktif'),
 ('Lapangan Voli', 'lapangan', NULL, NULL, 'Lapangan voli outdoor', 'dalam_perbaikan'),
-('Lapangan Basket', 'lapangan', NULL, NULL, 'Lapangan basket outdoor', 'aktif'),
+('Lapangan Basket', 'lapangan', NULL, NULL, 'Lapangan basket outdoor', 'aktif');
 
 -- =============================================
 -- RESERVASI: Sample Data (Opsional)
