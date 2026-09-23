@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 exports.register = async (req, res) => {
     try {
-        const { name, email, password, password_confirmation } = req.body;
+        const { name, email, password, confirmation } = req.body;
 
         await User.register({ name, email, password });
         
@@ -50,12 +50,14 @@ exports.login = async (req, res) => {
             }
         });
     } catch (err) {
+        const errorStatus = err.message === 'Email atau password salah' ? 401 : 403;
+
         console.error('Login error: ', err);
 
-        return res.status(401).render('login', {
+        return res.status(errorStatus).render('login', {
             errors: { 
-                email: 'Email atau password salah', 
-                password: 'Email atau password salah' 
+                email: err.message, 
+                password: err.message
             }, 
             oldInput: {
                 email: req.body.email
