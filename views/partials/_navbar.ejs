@@ -23,7 +23,14 @@
                 <!-- Admin: Tombol-tombol akan ditentukan dan ditambahkan nanti) -->
             <% } %>
 
-            <!-- Tombol Keluar untuk semua role ketika logged in -->
+            <!-- Tombol Keluar ketika logged in -->
+            <form action="/keluar" method="POST">
+                <%- include('_buttonRed', {
+                    iconClass: 'bi-box-arrow-right',
+                    label: 'Keluar',
+                    type: 'submit'
+                }) %>
+            </form>
         <% } else { %>
             <!-- Pengunjung (belum login): Fasilitas, Masuk, Daftar -->
                 <a href="/masuk">
