@@ -5,9 +5,21 @@ const User = require('../models/User');
 const loginValidation = [
     body('email')
         .trim().isEmail().bail()
-        .normalizeEmail(),
+        .normalizeEmail().custom((value) => {
+            // Validasi domain email harus @*.undip.ac.id
+            // Terima: user@undip.ac.id, user@students.undip.ac.id, user@foo.undip.ac.id
+            // Tolak: user@barundip.ac.id, user@gmail.com
+            const emailRegex = /@([a-zA-Z0-9-]+\.)*undip\.ac\.id$/;
+            
+            if (!emailRegex.test(value)) {
+                return false;   // No detailed message
+            }
+
+            return true;
+        }),
     body('password')
-        .trim().isLength({ min: 8 })
+        .isLength({ min: 8 }).bail()
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
 ];
 
 // Validasi register
@@ -46,11 +58,11 @@ const registerValidation = [
             }
         }),
     body('name')
-        .trim().notEmpty().withMessage('Nama tidak boleh kosong').bail()
-        .isLength({ min: 1, max: 255 }).withMessage('Nama harus berisi 1-255 karakter').bail()
-        .escape(), // Prevent XSS
+        .trim().isLength({ min: 1, max: 255 }).withMessage('Nama harus berisi 1-255 karakter').bail()
+        .matches(/^[a-zA-Z\s'.-]+$/).withMessage('Nama mengandung karakter yang tidak valid').bail()
+        .escape(), // escape() prevent XSS
     body('password')
-        .trim().isLength({ min: 8 }).withMessage('Password minimal berisi 8 karakter').bail()
+        .isLength({ min: 8 }).withMessage('Password minimal berisi 8 karakter').bail()
         .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/).withMessage('Password harus mengandung huruf kapital, huruf kecil, dan angka'),
     body('confirmation')
         .trim().custom((value, { req }) => value === req.body.password).withMessage('Password tidak cocok')
