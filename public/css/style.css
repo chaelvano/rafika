@@ -103,7 +103,7 @@ label {
 .btn-outline {
   border: 1px solid transparent !important;
   background: linear-gradient(150deg, var(--primary-rgb) 25%, var(--secondary-rgb)) padding-box,
-              linear-gradient(var(--white), var(--white)) padding-box,
+              linear-gradient(var(--white-rgb), var(--white-rgb)) padding-box,
               linear-gradient(150deg, var(--primary-rgb) 25%, var(--secondary-rgb)) border-box !important;
   -webkit-background-clip: text, padding-box, border-box !important;
   background-clip: text, padding-box, border-box !important;
@@ -129,11 +129,8 @@ label {
 
 .text-field {
   border: 1px solid transparent !important;
-  background: linear-gradient(150deg, var(--primary-rgb) 25%, var(--secondary-rgb)) padding-box,
-              linear-gradient(var(--white), var(--white)) padding-box,
+  background: linear-gradient(var(--white-rgb), var(--white-rgb)) padding-box,
               linear-gradient(150deg, var(--primary-rgb) 25%, var(--secondary-rgb)) border-box !important;
-  -webkit-background-clip: text, padding-box, border-box !important;
-  background-clip: text, padding-box, border-box !important;
   color: var(--black) !important;
 }
 
@@ -145,7 +142,6 @@ label {
   border-width: 2px !important;
   filter: brightness(1.0);
 }
-
 
 .tbl-col:hover {
   cursor: pointer;
