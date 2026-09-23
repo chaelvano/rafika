@@ -1,8 +1,8 @@
-<div class="w-100 <%= locals.errorMessage ? '' : 'my-1' %>">
-    <label class="fs-6 fw-light mx-3" for="<%= name %>-form"><%= label %></label>
+<div id="<%= name %>-form" class="w-100 <%= locals.errorMessage ? '' : 'my-1' %>">
+    <label class="fs-6 fw-light mx-3" for="<%= name %>-field"><%= label %></label>
 
     <div class="position-relative">
-        <input id="<%= name %>-form" class="text-field form-control rounded-3 fw-light <%= type === 'password' ? 'pe-5' : '' %>" name="<%= name %>" type="<%= type %>" <%- locals.errorMessage ? 'style="border-color: var(--red) !important;"' : '' %> placeholder="<%= locals.placeholder || '' %>" value="<%= locals.value || '' %>">
+        <input id="<%= name %>-field" class="text-field form-control rounded-3 fs-6 fw-light <%= type === 'password' ? 'pe-5' : '' %>" name="<%= name %>" type="<%= type %>" <%- locals.errorMessage ? 'style="border-color: var(--red) !important;"' : '' %> autocomplete="off" placeholder="<%= locals.placeholder || '' %>" value="<%= locals.value || '' %>">
 
         <% if (type === 'password') { %>
             <button id="<%= name %>-toggle" type="button" class="btn p-0 border-0 position-absolute translate-middle-x translate-middle-y end-0 top-50 me-3" style="color: var(--grey);">
@@ -11,7 +11,7 @@
 
             <script>
               (() => {
-                const input = document.getElementById('<%= name %>-form');
+                const input = document.getElementById('<%= name %>-field');
                 const toggle = document.getElementById('<%= name %>-toggle');
                 const icon = toggle.querySelector('i');
 
@@ -26,7 +26,5 @@
         <% } %>
     </div>
 
-    <% if (locals.errorMessage) { %>
-        <small id="<%= name %>-message" class="form-text text-danger fw-light mx-3 my-0"><%= errorMessage %></small>
-    <% } %>
+    <small id="<%= name %>-message" class="form-text text-danger fw-light mx-3 my-0 <%= locals.errorMessage ? '' : 'd-none' %>"><%= locals.errorMessage || '' %></small>
 </div>
