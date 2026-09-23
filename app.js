@@ -50,7 +50,7 @@ app.use((err, req, res, next) => {
 
   res.status(errorStatus).render('error', {
     status: errorStatus,
-    errors: process.env.NODE_ENV === 'development' ? err : errorStatus === 500 ? { message: 'Terjadi kesalahan di server' } : {}
+    errors: process.env.NODE_ENV === 'development' ? err : { message: 'Terjadi kesalahan' }
   });
 });
 
