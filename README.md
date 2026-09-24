@@ -26,7 +26,7 @@ Aplikasi web untuk mengelola penggunaan fasilitas kampus (ruang kelas, aula, lab
 
 1. **Clone repository**
 ```bash
-git clone <repository-url>
+git clone https://github.com/chaelvano/rafika.git
 cd rafika
 ```
 
