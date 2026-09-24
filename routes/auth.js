@@ -3,9 +3,12 @@ const router = express.Router();
 const authController = require('../app/controllers/authController');
 const { loginValidation, registerValidation, handleLoginValidationErrors, handleRegisterValidationErrors } = require('../app/middleware/validation');
 const { registerLimiter, loginLimiter } = require('../app/middleware/rateLimiter');
+const { isAuthenticated, isGuest } = require('../app/middleware/auth');
 
-router.get('/daftar', (req, res) => {
-    res.render('register');
+router.get('/daftar', 
+    isGuest, 
+    (req, res) => {
+        res.render('register');
 });
 
 router.post('/daftar', 
@@ -15,8 +18,10 @@ router.post('/daftar',
     authController.register
 );
 
-router.get('/masuk', (req, res) => {
-    res.render('login');
+router.get('/masuk', 
+    isGuest, 
+    (req, res) => {
+        res.render('login');
 });
 
 router.post('/masuk', 
@@ -26,6 +31,8 @@ router.post('/masuk',
     authController.login
 );
 
-router.post('/keluar', authController.logout);
+router.post('/keluar', 
+    isAuthenticated, 
+    authController.logout);
 
 module.exports = router;
