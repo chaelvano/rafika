@@ -40,7 +40,7 @@ const registerValidation = [
         }).bail()
         .custom(async (value) => {
             try {
-                const existingUser = await User.findByEmail(value);
+                const existingUser = await User.getByEmail(value);
                 
                 if (existingUser) {
                     throw new Error('Email sudah terdaftar');

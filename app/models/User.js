@@ -17,7 +17,7 @@ class User {
     }
 
     static async login({ email, password }) {
-        const user = await this.findByEmail(email);
+        const user = await this.getByEmail(email);
 
         if (!user) {
             throw new Error('Email atau password salah');
@@ -40,11 +40,16 @@ class User {
         return userWithoutPassword;
     }
 
-    // findById()
-    
-    static async findByEmail(email) {
+    static async getByEmail(email) {
         const query = `
-            SELECT * FROM pengguna
+            SELECT 
+                id,
+                email,
+                nama,
+                password_hash,
+                role,
+                status
+            FROM pengguna
             WHERE email = $1;
         `;
 
@@ -53,7 +58,7 @@ class User {
         return result.rows[0] || null;
     }
 
-    // findByStatus()
+    // getByStatus()
     // verify()
     // create()
 }
