@@ -32,41 +32,40 @@ INSERT INTO pengguna (nama, email, password_hash, role, status) VALUES
 
 INSERT INTO fasilitas (nama, tipe, lokasi, kapasitas, deskripsi, status) VALUES
 -- Ruang Kelas
-('Ruang A101', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'nonaktif'),
-('Ruang A102', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'dalam_perbaikan'),
-('Ruang A103', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A104', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A105', 'ruang_kelas', 'Gedung A', 75, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A201', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A202', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A203', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A204', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A205', 'ruang_kelas', 'Gedung A', 75, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A301', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A302', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A303', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A304', 'ruang_kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
-('Ruang A305', 'ruang_kelas', 'Gedung A', 75, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A101', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'nonaktif'),
+('Ruang A102', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'dalam_perbaikan'),
+('Ruang A103', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A104', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A105', 'Ruang Kelas', 'Gedung A', 75, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A201', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A202', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A203', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A204', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A205', 'Ruang Kelas', 'Gedung A', 75, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A301', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A302', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A303', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A304', 'Ruang Kelas', 'Gedung A', 50, 'Ruang kelas dengan AC dan IFP', 'aktif'),
+('Ruang A305', 'Ruang Kelas', 'Gedung A', 75, 'Ruang kelas dengan AC dan IFP', 'aktif'),
 
 -- Aula
-('Ruang E101', 'aula', 'Gedung E', 200, 'Aula utama dengan AC dan sound system', 'aktif'),
+('Ruang E101', 'Aula', 'Gedung E', 200, 'Aula utama dengan AC dan sound system', 'aktif'),
 
 -- Laboratorium
-('Lab Komputer A', 'laboratorium', 'Gedung E', 30, 'Lab komputer dengan 30 unit PC dan AC', 'nonaktif'),
-('Lab Komputer B', 'laboratorium', 'Gedung E', 30, 'Lab komputer dengan 30 unit PC dan AC', 'dalam_perbaikan'),
-('Lab Komputer C', 'laboratorium', 'Gedung E', 30, 'Lab komputer dengan 30 unit PC dan AC', 'aktif'),
-('Lab Komputer D', 'laboratorium', 'Gedung E', 30, 'Lab komputer dengan 30 unit PC dan AC', 'aktif'),
+('Lab Komputer A', 'Laboratorium', 'Gedung E', 30, 'Lab komputer dengan 30 unit PC dan AC', 'nonaktif'),
+('Lab Komputer B', 'Laboratorium', 'Gedung E', 30, 'Lab komputer dengan 30 unit PC dan AC', 'dalam_perbaikan'),
+('Lab Komputer C', 'Laboratorium', 'Gedung E', 30, 'Lab komputer dengan 30 unit PC dan AC', 'aktif'),
+('Lab Komputer D', 'Laboratorium', 'Gedung E', 30, 'Lab komputer dengan 30 unit PC dan AC', 'aktif'),
 
 -- Peralatan (kapasitas dan lokasi tidak relevan, set NULL)
-('Proyektor Sony VPL-EX430', 'peralatan', NULL, NULL, 'Proyektor portabel', 'aktif'),
-('Proyektor Epson EB-X41', 'peralatan', NULL, NULL, 'Proyektor portabel', 'aktif'),
-('Sound System Portable', 'peralatan', NULL, NULL, 'Sound system portabel dengan wireless mic', 'aktif'),
-('Camera Canon EOS 80D', 'peralatan', NULL, NULL, 'Kamera DSLR untuk dokumentasi acara', 'aktif'),
+('Proyektor Epson EB-X41', 'Peralatan', NULL, NULL, 'Proyektor portabel', 'aktif'),
+('Sound System Portable', 'Peralatan', NULL, NULL, 'Sound system portabel dengan wireless mic', 'aktif'),
+('Camera Canon EOS 80D', 'Peralatan', NULL, NULL, 'Kamera DSLR untuk dokumentasi acara', 'aktif'),
 
 -- Lapangan (kapasitas dan lokasi tidak relevan, set NULL)
-('Lapangan Badminton', 'lapangan', NULL, NULL, 'Lapangan badminton outdoor', 'nonaktif'),
-('Lapangan Voli', 'lapangan', NULL, NULL, 'Lapangan voli outdoor', 'dalam_perbaikan'),
-('Lapangan Basket', 'lapangan', NULL, NULL, 'Lapangan basket outdoor', 'aktif');
+('Lapangan Badminton', 'Lapangan', NULL, NULL, 'Lapangan badminton outdoor', 'nonaktif'),
+('Lapangan Voli', 'Lapangan', NULL, NULL, 'Lapangan voli outdoor', 'dalam_perbaikan'),
+('Lapangan Basket', 'Lapangan', NULL, NULL, 'Lapangan basket outdoor', 'aktif');
 
 -- =============================================
 -- RESERVASI: Sample Data (Opsional)

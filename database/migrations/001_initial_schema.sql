@@ -33,11 +33,11 @@ CREATE TYPE status_pengguna AS ENUM (
 );
 
 CREATE TYPE tipe_fasilitas AS ENUM (
-  'ruang_kelas',
-  'aula',
-  'laboratorium',
-  'peralatan',
-  'lapangan'
+  'Ruang Kelas',
+  'Aula',
+  'Laboratorium',
+  'Peralatan',
+  'Lapangan'
 );
 
 CREATE TYPE status_fasilitas AS ENUM (
@@ -113,18 +113,18 @@ CREATE TABLE fasilitas (
   dibuat_pada TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   diperbarui_pada TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   
-  -- Constraint: kapasitas hanya untuk ruang_kelas, aula, laboratorium
+  -- Constraint: kapasitas hanya untuk Ruang Kelas, Aula, Laboratorium
   CONSTRAINT chk_kapasitas_required CHECK (
-    (tipe IN ('ruang_kelas', 'aula', 'laboratorium') AND kapasitas IS NOT NULL)
+    (tipe IN ('Ruang Kelas', 'Aula', 'Laboratorium') AND kapasitas IS NOT NULL)
     OR
-    (tipe IN ('peralatan', 'lapangan') AND kapasitas IS NULL)
+    (tipe IN ('Peralatan', 'Lapangan') AND kapasitas IS NULL)
   ),
   
-  -- Constraint: lokasi hanya untuk ruang_kelas, aula, laboratorium
+  -- Constraint: lokasi hanya untuk Ruang Kelas, Aula, Laboratorium
   CONSTRAINT chk_lokasi_required CHECK (
-    (tipe IN ('ruang_kelas', 'aula', 'laboratorium') AND lokasi IS NOT NULL)
+    (tipe IN ('Ruang Kelas', 'Aula', 'Laboratorium') AND lokasi IS NOT NULL)
     OR
-    (tipe IN ('peralatan', 'lapangan') AND lokasi IS NULL)
+    (tipe IN ('Peralatan', 'Lapangan') AND lokasi IS NULL)
   )
 );
 
@@ -134,8 +134,8 @@ CREATE INDEX idx_fasilitas_status ON fasilitas(status);
 CREATE INDEX idx_fasilitas_lokasi ON fasilitas(lokasi);
 
 COMMENT ON TABLE fasilitas IS 'Master data fasilitas kampus';
-COMMENT ON COLUMN fasilitas.kapasitas IS 'Kapasitas: WAJIB untuk ruang_kelas/aula/laboratorium, HARUS NULL untuk peralatan/lapangan';
-COMMENT ON COLUMN fasilitas.lokasi IS 'Lokasi: WAJIB untuk ruang_kelas/aula/laboratorium, HARUS NULL untuk peralatan/lapangan';
+COMMENT ON COLUMN fasilitas.kapasitas IS 'Kapasitas: WAJIB untuk Ruang Kelas/Aula/Laboratorium, HARUS NULL untuk Peralatan/Lapangan';
+COMMENT ON COLUMN fasilitas.lokasi IS 'Lokasi: WAJIB untuk Ruang Kelas/Aula/Laboratorium, HARUS NULL untuk Peralatan/Lapangan';
 COMMENT ON COLUMN fasilitas.status IS 'aktif = bisa direservasi, dalam_perbaikan = tidak bisa direservasi';
 
 -- =============================================
